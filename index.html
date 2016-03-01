@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <script>
+function appelAjax()
+{
+  var monObjAjax = new XMLHttpRequest();
+
+  monObjAjax.onreadystatechange = function() {
+      if (monObjAjax.readyState == 4 && (monObjAjax.status == 200 || monObjAjax.status == 0)) {
+          var maDiv = document.getElementById("divTexte");
+          maDiv.innerHTML += monObjAjax.responseText + "<hr>"; // Données textuelles récupérées
+      }
+  };
+monObjAjax.open("GET", "page.php", true);
+monObjAjax.send(null);
+}
+  </script>
+</head>
+
+<body>
+    <button onclick="appelAjax();"> Go ! </button>
+<div id="divTexte">Texte initial de ma div<hr/></div>
+</body>
+</html>
